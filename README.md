@@ -54,6 +54,7 @@ ROI.height = ROI.y + ROI.height > img_cpy.rows ? ROI.height + img_cpy.rows - (RO
 ```
 <br>
 ### 2) Matching 방식에 따른 macth 지점 구하기 및 thershold 설정
+
 ```c
 cv::minMaxLoc(result, &minVal, &maxVal, &minLoc, &maxLoc, general_mask);
 
