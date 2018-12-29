@@ -62,5 +62,11 @@ else
 	if (maxVal < threshold || match_num > 20)
 		break;
 }
-    ```
+```
 <br><br>
+
+### 3) Matching 주변을 또 찾지 않게 masking 해버리기
+```c
+Mat template_mask = Mat::zeros(template_h, template_w, CV_8UC1);
+template_mask.copyTo(general_mask(cv::Rect(x, y, template_w, template_h)));
+```
