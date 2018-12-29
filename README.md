@@ -20,7 +20,7 @@
 <br><br>
 
 # 4. 몇 가지 기록
- ## 1. ROI 잡기
+ ## 1) ROI 잡기
  
 ```c
 int mouse_x = cvui::mouse().x;
