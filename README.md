@@ -23,21 +23,21 @@
  ## 1. ROI 잡기
  
 ```c
- 			int mouse_x = cvui::mouse().x;
-			int mouse_y = cvui::mouse().y;
+int mouse_x = cvui::mouse().x;
+int mouse_y = cvui::mouse().y;
 
-			mouse_x = mouse_x < 0 ? 0 : mouse_x;
-			mouse_y = mouse_y < 0 ? 0 : mouse_y;
+mouse_x = mouse_x < 0 ? 0 : mouse_x;
+mouse_y = mouse_y < 0 ? 0 : mouse_y;
 
-			int width = mouse_x - anchor.x;
-			int height = mouse_y - anchor.y;
+int width = mouse_x - anchor.x;
+int height = mouse_y - anchor.y;
 
-			ROI.x = width < 0 ? anchor.x + width : anchor.x;
-			ROI.y = height < 0 ? anchor.y + height : anchor.y;
+ROI.x = width < 0 ? anchor.x + width : anchor.x;
+ROI.y = height < 0 ? anchor.y + height : anchor.y;
 
-			ROI.width = std::abs(width);
-			ROI.height = std::abs(height);
+ROI.width = std::abs(width);
+ROI.height = std::abs(height);
 
-			ROI.width = ROI.x + ROI.width > img_cpy.cols ? ROI.width + img_cpy.cols - (ROI.x + ROI.width) : ROI.width;
-			ROI.height = ROI.y + ROI.height > img_cpy.rows ? ROI.height + img_cpy.rows - (ROI.y + ROI.height) : ROI.height;
+ROI.width = ROI.x + ROI.width > img_cpy.cols ? ROI.width + img_cpy.cols - (ROI.x + ROI.width) : ROI.width;
+ROI.height = ROI.y + ROI.height > img_cpy.rows ? ROI.height + img_cpy.rows - (ROI.y + ROI.height) : ROI.height;
 ```
