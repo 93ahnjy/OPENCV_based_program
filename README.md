@@ -17,3 +17,27 @@
  **3)** matching에 사용된 방식에 따른 결과 이미지가 Controller 창에 나타난다.<br>
  **4)** 이 결과이미지의 최대/최소 값을 찾으며, 그 값이 threshold보다 높을 때 까지 match 지점을 찾는다.(최대 20개)<br>
  **5)** 최종 결과 이미지에 template matching된 영역이 표시된다.<br>
+<br><br>
+
+# 4. 몇 가지 기록
+ ## 1. ROI 잡기
+ 
+ '''c
+ 			int mouse_x = cvui::mouse().x;
+			int mouse_y = cvui::mouse().y;
+
+			mouse_x = mouse_x < 0 ? 0 : mouse_x;
+			mouse_y = mouse_y < 0 ? 0 : mouse_y;
+
+			int width = mouse_x - anchor.x;
+			int height = mouse_y - anchor.y;
+
+			ROI.x = width < 0 ? anchor.x + width : anchor.x;
+			ROI.y = height < 0 ? anchor.y + height : anchor.y;
+
+			ROI.width = std::abs(width);
+			ROI.height = std::abs(height);
+
+			ROI.width = ROI.x + ROI.width > img_cpy.cols ? ROI.width + img_cpy.cols - (ROI.x + ROI.width) : ROI.width;
+			ROI.height = ROI.y + ROI.height > img_cpy.rows ? ROI.height + img_cpy.rows - (ROI.y + ROI.height) : ROI.height;
+ '''
