@@ -22,7 +22,7 @@
 # 4. 몇 가지 기록
  ## 1. ROI 잡기
  
- '''c
+```c
  			int mouse_x = cvui::mouse().x;
 			int mouse_y = cvui::mouse().y;
 
@@ -40,4 +40,4 @@
 
 			ROI.width = ROI.x + ROI.width > img_cpy.cols ? ROI.width + img_cpy.cols - (ROI.x + ROI.width) : ROI.width;
 			ROI.height = ROI.y + ROI.height > img_cpy.rows ? ROI.height + img_cpy.rows - (ROI.y + ROI.height) : ROI.height;
- '''
+```
