@@ -26,18 +26,21 @@
 int mouse_x = cvui::mouse().x;
 int mouse_y = cvui::mouse().y;
 
+// 지금 내 마우스 위치가 window 북서쪽으로 벗어났는가?
 mouse_x = mouse_x < 0 ? 0 : mouse_x;
 mouse_y = mouse_y < 0 ? 0 : mouse_y;
 
 int width = mouse_x - anchor.x;
 int height = mouse_y - anchor.y;
 
+// 지금 내 마우스 위치가 ROI의 북서쪽에 위치하는가?
 ROI.x = width < 0 ? anchor.x + width : anchor.x;
 ROI.y = height < 0 ? anchor.y + height : anchor.y;
 
 ROI.width = std::abs(width);
 ROI.height = std::abs(height);
 
+// 지금 내 마우스 위치가 window 남동쪽으로 벗어났는가?
 ROI.width = ROI.x + ROI.width > img_cpy.cols ? ROI.width + img_cpy.cols - (ROI.x + ROI.width) : ROI.width;
 ROI.height = ROI.y + ROI.height > img_cpy.rows ? ROI.height + img_cpy.rows - (ROI.y + ROI.height) : ROI.height;
 ```
