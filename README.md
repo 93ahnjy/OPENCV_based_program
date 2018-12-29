@@ -8,4 +8,4 @@
 
 <br><br>
 # 2. 전체적인 모습
-
+![프로그램 실행 모습](https://user-images.githubusercontent.com/43025974/50533823-ca064b00-0b75-11e9-9dd6-39f0c466bd72.png)
