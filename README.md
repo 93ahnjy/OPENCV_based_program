@@ -45,21 +45,22 @@ ROI.height = std::abs(height);
 ROI.width = ROI.x + ROI.width > img_cpy.cols ? ROI.width + img_cpy.cols - (ROI.x + ROI.width) : ROI.width;
 ROI.height = ROI.y + ROI.height > img_cpy.rows ? ROI.height + img_cpy.rows - (ROI.y + ROI.height) : ROI.height;
 ```
-
+<br><br>
 ### 2) Matching 방식에 따른 macth 지점 구하기 차이
 ```c
-				cv::minMaxLoc(result, &minVal, &maxVal, &minLoc, &maxLoc, general_mask);
+cv::minMaxLoc(result, &minVal, &maxVal, &minLoc, &maxLoc, general_mask);
 
-				if (method == TM_SQDIFF || method == TM_SQDIFF_NORMED)
-				{
-					matchLoc = minLoc;
-					if (minVal > 1-threshold || match_num > 20)
-						break;
-				}
-				else
-				{
-					matchLoc = maxLoc;
-					if (maxVal < threshold || match_num > 20)
-						break;
-				}
+if (method == TM_SQDIFF || method == TM_SQDIFF_NORMED)
+{
+	matchLoc = minLoc;
+	if (minVal > 1-threshold || match_num > 20)
+		break;
+}
+else
+{
+	matchLoc = maxLoc;
+	if (maxVal < threshold || match_num > 20)
+		break;
+}
     ```
+<br><br>
