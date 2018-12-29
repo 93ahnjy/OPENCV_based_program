@@ -6,6 +6,13 @@
  - https://docs.opencv.org/3.4/de/da9/tutorial_template_matching.html <br>
  - https://docs.opencv.org/3.0-beta/doc/py_tutorials/py_imgproc/py_template_matching/py_template_matching.html
 
+### 사용함수
+```c
+matchTemplate(img_gray, templ, result, method) // 주요 함수;
+cv::minMaxLoc(result, &minVal, &maxVal, &minLoc, &maxLoc, general_mask)  // 해당 이미지 내에 최대/최소값 및 그 위치들 기록;
+```
+
+
 <br><br>
 # 2. 전체적인 모습
 ![프로그램 실행 모습](https://user-images.githubusercontent.com/43025974/50533823-ca064b00-0b75-11e9-9dd6-39f0c466bd72.png)
@@ -45,8 +52,8 @@ ROI.height = std::abs(height);
 ROI.width = ROI.x + ROI.width > img_cpy.cols ? ROI.width + img_cpy.cols - (ROI.x + ROI.width) : ROI.width;
 ROI.height = ROI.y + ROI.height > img_cpy.rows ? ROI.height + img_cpy.rows - (ROI.y + ROI.height) : ROI.height;
 ```
-<br><br>
-### 2) Matching 방식에 따른 macth 지점 구하기 차이
+<br>
+### 2) Matching 방식에 따른 macth 지점 구하기 및 thershold 설정
 ```c
 cv::minMaxLoc(result, &minVal, &maxVal, &minLoc, &maxLoc, general_mask);
 
@@ -63,10 +70,15 @@ else
 		break;
 }
 ```
-<br><br>
+<br>
 
 ### 3) Matching 주변을 또 찾지 않게 match 지점 주변 masking 해버리기
 ```c
 Mat template_mask = Mat::zeros(template_h, template_w, CV_8UC1);
 template_mask.copyTo(general_mask(cv::Rect(x, y, template_w, template_h)));
 ```
+<br>
+
+# 5. 결론
+즉, template으로 스캐닝해서 나온 흑백 이미지에서 min, max 값을 계속 찾고, 찾을 때마다 그 주변을 masking한 뒤에 다음 min, max를 찾는 식으로 해서
+threshold를 더이상 못넘을 때까지 전부 찾는 방식이다.  
